@@ -1,6 +1,5 @@
 class Solution:
-    # solution #2 0902
-    
+    # solution #1 0902
     def isPalindrome(self, x: int) -> bool: 
         import math
         if x < 0:
@@ -25,26 +24,23 @@ class Solution:
                 break
         return False
 
-def main():
-    import sys
-    import io
-    def readlines():
-        for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
-            yield line.strip('\n')
-
-    lines = readlines()
-    while True:
-        try:
-            line = next(lines)
-            x = int(line);
-            
-            ret = Solution().reverse(x)
-
-            out = str(ret);
-            print(out)
-        except StopIteration:
-            break
-
-if __name__ == '__main__':
-    main()
+    # solution #2 0903
+    def isPalindrome(self, x: int) -> bool: 
+        import math
+        if x < 0 or (x%10 ==0 and x !=0):
+        # 这个地方的特殊判断一直没搞出来
+        # 而且其实只有X0这几个特例会出问题
+        # 别的两位数都没问题
+            return False
+        out = 0
+        out = out*10 + x % 10
+        x = x // 10
+        while( x > out ):
+            out = out*10 + x % 10
+            x = x // 10
+        if x==out or (out // 10)==x:
+            return True
+        else:
+            return False
+        
 
